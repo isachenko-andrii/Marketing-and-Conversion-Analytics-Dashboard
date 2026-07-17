@@ -118,10 +118,10 @@
   
 **Marketing and Conversion Analytics Dashboard**/ — каталог проекту  
 ├── data/ — дані проєкту  
-├── sql/ — код запиту за BigQuery  
 ├── doc/ — технічне завдання  
-├── img/ — збережені графіки та дашборди  
+├── sql/ — код запиту за BigQuery  
 ├── twbx/ — файли проекту  
+├── img/ — збережені графіки та дашборди  
 ├── LICENSE — MIT Ліцензія  
 ├── project-logo.png — обкладинка проекту  
 ├── README-UA.md — опис проекту українською мовою   

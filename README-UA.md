@@ -22,6 +22,7 @@
 ## Контакти  
     
 **Автор:** [Andrii Isachenko](https://isachenko-andrii.github.io)   
+**Посада:** Junior Data Analyst  
 **LinkedIn:** [Andrii Isachenko](https://www.linkedin.com/in/isachenko-andrii/)  
 **E-mail:** andrii.isachenko@gmail.com   
   

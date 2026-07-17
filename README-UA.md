@@ -29,10 +29,9 @@
 
 *   Досліджено ключові події користувацького шляху (від `session_start` до `purchase`).
 *   Визначено параметри подій (`event_params`), необхідні для ідентифікації сесій та джерел трафіку.
-
-![Крок 1: Робота з сирими даними у BigQuery](assets/img/step1_bigquery_raw.png)
-*Скриншот: Процес написання або виконання запиту в інтерфейсі Google BigQuery*
-
+  
+![Step 1: Working with raw data in BigQuery](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/msa_1.png)  
+  
 ---
 
 ### Крок 2. Написання та оптимізація SQL-запиту

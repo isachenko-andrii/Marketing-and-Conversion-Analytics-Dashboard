@@ -30,7 +30,7 @@
 *   Досліджено ключові події користувацького шляху (від `session_start` до `purchase`).
 *   Визначено параметри подій (`event_params`), необхідні для ідентифікації сесій та джерел трафіку.
   
-![Step 1: Working with raw data in BigQuery](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/msa_1.png)  
+![Step 1: Working with raw data in BigQuery](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_1.png)  
   
 ---
 

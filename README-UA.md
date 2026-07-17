@@ -36,8 +36,6 @@
   
 ![Step 1: Working with raw data in BigQuery](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_1.png)  
   
----
-
 ### Крок 2. Написання та оптимізація SQL-запиту
 Для підготовки чистих та легких даних для візуалізації було створено оптимізований SQL-запит.
 *   Використано загальні табличні вирази (CTE) для розділення логіки збору атрибутів сесії та кроків воронки.
@@ -46,8 +44,6 @@
   
 ![Step 2: Result of executing the optimized query](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_2.png)   
   
----
-
 ### Крок 3. Проектування архітектури дашборду в Tableau
 Перед побудовою візуалізацій було розроблено логічну структуру майбутнього дашборду відповідно до вимог технічного завдання та аналітичних стандартів:
 *   Створено зв'язок з екстрактом даних (Extract) для забезпечення максимальної швидкості роботи звіту.
@@ -55,9 +51,7 @@
 *   Визначено основну сітку дашборду з акцентом на головну воронку продажів по центру.
  
 ![Step 3: Tableau Workspace and Calculated Fields](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_3.png)   
-  
----  
-  
+    
 ### Крок 4. Фінальний дизайн та налаштування інтерактивності
 Завершальний етап — візуальне оформлення дашборду та налаштування користувацького досвіду:
 *   Реалізовано "принцип 5 секунд" завдяки винесенню головних KPI у верхню частину екрана.

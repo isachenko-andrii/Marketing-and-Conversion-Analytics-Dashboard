@@ -63,7 +63,19 @@
 ![Step 4: Ready-made interactive dashboard](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_4.png)  
   
 ---  
-   
+  
+## Структура воронки (Funnel Steps)  
+  
+Аналіз проводився за такими послідовними кроками користувача:  
+  
+ - Session Start ( Visit ) — Початок сесії.   
+ - View Item ( Engagement ) — Перегляд картки товару.  
+ - Add to Cart ( Cart ) — Додавання товару в кошик.  
+ - Begin Checkout ( Shipping ) — Початок оформлення замовлення.  
+ - Add Shipping Info ( Checkout ) — Введення інформації про доставку.  
+ - Add Payment Info ( Payment ) — Введення платіжних даних.  
+ - Purchase ( Action ) — Успішна оплата та отримання доходу.   
+  
 ## Структура проекту  
   
 **Marketing and Conversion Analytics Dashboard**/ — каталог проекту  

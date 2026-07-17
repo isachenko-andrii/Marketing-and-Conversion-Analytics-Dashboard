@@ -12,9 +12,13 @@
 Цей проєкт присвячений аналізу поведінки користувачів інтернет-магазину на основі реальних (знеособлених) даних Google Analytics 4 (GA4).  
 **Мета проєкту** — дослідити шлях клієнта від першого візиту до здійснення покупки, візуалізувати воронку конверсії та визначити ключові фактори, які впливають на падіння конверсії на кожному з етапів.  
 
+## Джерело даних  
+  
+Публічний датасет [bigquery-public-data.ga4_obfuscated_sample_ecommerce](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table) в Google BigQuery.
+
 ## Використаний технологічний стек  
   
-*   **База даних & SQL**: Google BigQuery (робота з сирими даними [bigquery-public-data.ga4_obfuscated_sample_ecommerce](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table))  
+*   **База даних & SQL**: Google BigQuery (робота з сирими даними bigquery-public-data.ga4_obfuscated_sample_ecommerce)  
 *   **BI-інструмент**: Tableau Public (побудова інтерактивного дашборду)  
 *   **Очищення та трансформація даних**: Створення плоских агрегованих таблиць на рівні сесій за допомогою складних CTE та віконних функцій SQL.  
   

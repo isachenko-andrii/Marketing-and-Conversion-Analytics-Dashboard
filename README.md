@@ -29,89 +29,92 @@ Public dataset [bigquery-public-data.ga4_obfuscated_sample_ecommerce](https://co
  
 The project was implemented in 4 consecutive stages: from analyzing the database structure to building and designing the final dashboard.  
   
-### Крок 1. Дослідження структури даних у BigQuery
-На першому етапі було проаналізовано схему таблиць публічного набору даних `ga4_obfuscated_sample_ecommerce`. Оскільки дані GA4 зберігаються у денормалізованому вигляді зі вкладеними полями (RECORD/STRUCT), було розроблено стратегію розгортання параметрів за допомогою оператора `UNNEST`.
-
-*   Досліджено ключові події користувацького шляху (від `session_start` до `purchase`).
-*   Визначено параметри подій (`event_params`), необхідні для ідентифікації сесій та джерел трафіку.
+### Step 1. Exploring the data structure in BigQuery  
+The first step was to analyze the table schema of the public dataset `ga4_obfuscated_sample_ecommerce`. Since GA4 data is stored in a denormalized form with nested fields (RECORD/STRUCT), a strategy for expanding parameters using the `UNNEST` operator was developed.  
   
+* Key events of the user journey were explored (from `session_start` to `purchase`).  
+* Event parameters (`event_params`) were determined, which are necessary for identifying sessions and traffic sources.
+   
 ![Step 1: Working with raw data in BigQuery](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_1.png)  
   
-### Крок 2. Написання та оптимізація SQL-запиту
-Для підготовки чистих та легких даних для візуалізації було створено оптимізований SQL-запит.
-*   Використано загальні табличні вирази (CTE) для розділення логіки збору атрибутів сесії та кроків воронки.
-*   За допомогою регулярних виразів `REGEXP_EXTRACT` очищено URL-адреси до рівня посадкових сторінок (Landing Pages).
-*   Застосовано агрегацію (Pivot) подій у бінарні прапорці (`0` та `1`) для кожного кроку воронки, що дозволило Tableau миттєво рахувати конверсії без складних обчислень на льоту.
+### Step 2. Write and optimize SQL query  
+To prepare clean and lightweight data for visualization, an optimized SQL query was created.  
+  
+* Common Table Expressions (CTE) were used to separate the logic of collecting session attributes and funnel steps.  
+* Using `REGEXP_EXTRACT` regular expressions, URLs were cleaned up to the Landing Pages level.  
+* Applied aggregation (Pivot) of events into binary flags (`0` and `1`) for each funnel step, which allowed Tableau to instantly count conversions without complex calculations on the fly.  
   
 ![Step 2: Result of executing the optimized query](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_2.png)   
   
-### Крок 3. Проектування архітектури дашборду в Tableau
-Перед побудовою візуалізацій було розроблено логічну структуру майбутнього дашборду відповідно до вимог технічного завдання та аналітичних стандартів:
-*   Створено зв'язок з екстрактом даних (Extract) для забезпечення максимальної швидкості роботи звіту.
-*   Розраховано ключові метрики (Calculated Fields) для обчислення конверсії (Conversion Rate) та відтоку користувачів (Drop-off Rate) між етапами.
-*   Визначено основну сітку дашборду з акцентом на головну воронку продажів по центру.
- 
+### Step 3. Designing the dashboard architecture in Tableau  
+Before building the visualizations, the logical structure of the future dashboard was developed in accordance with the requirements of the technical specifications and analytical standards:  
+  
+* A connection was created with the data extract (Extract) to ensure maximum report speed.  
+* Key metrics (Calculated Fields) were calculated to calculate the conversion (Conversion Rate) and user outflow (Drop-off Rate) between stages.  
+* The main dashboard grid was defined with an emphasis on the main sales funnel in the center.  
+    
 ![Step 3: Tableau Workspace and Calculated Fields](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_3.png)   
     
-### Крок 4. Фінальний дизайн та налаштування інтерактивності
-Завершальний етап — візуальне оформлення дашборду та налаштування користувацького досвіду:
-*   Реалізовано "принцип 5 секунд" завдяки винесенню головних KPI у верхню частину екрана.
-*   Налаштовано інтерактивні фільтри (за часом, країною, пристроями) та додано функцію *Use as Filter* для діаграм зрізів, що дозволяє користувачу досліджувати дані в один клік.
-*   Застосовано стриману палітру кольорів для фокусування уваги на ключових показниках ефективності маркетингу.
+### Step 4. Final design and interactivity settings  
+The final stage is visual design of the dashboard and user experience settings:  
+ 
+* Implemented the "5-second principle" by moving the main KPIs to the top of the screen.  
+* Configured interactive filters (by time, country, devices) and added the *Use as Filter* function for slice charts, which allows the user to explore data in one click.  
+* Applied a restrained color palette to focus attention on key marketing performance indicators.
   
 ![Step 4: Ready-made interactive dashboard](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/img/mca_4.png)  
   
 ---  
   
-## Ключові висновки (Insights)  
+## Key Insights  
   
-Проаналізувавши отримані під час виконання проєкту данні можна зробити наступні висновки:  
+After analyzing the data obtained during the project, the following conclusions can be drawn:  
   
-**1. Аналіз воронки конверсії (Голова проблема — «Bounce» на старті)**
-
- * Величезний відтік на першому кроці (Visit ➡️ Engagement): Найбільш критична точка втрати користувачів. 78.79% відвідувачів залишають сайт без будь-якої взаємодії (конверсія у залучення становить лише 21.21%). Це свідчить про низьку якість трафіку, занадто повільне завантаження сторінок або нерелевантність посадкової сторінки (Landing Page) очікуванням користувача.
- * Етап додавання в кошик (Engagement ➡️ Cart): Лише 4.2% від початкових користувачів додають товар у кошик. Від залучених користувачів це становить близько 20% — стандартний показник для e-commerce, але загальний обсяг сильно страждає через просідання на першому кроці.
- * Оформлення та оплата (Checkout ➡️ Payment ➡️ Action):
-     - Етапи Shipping та Checkout мають ідентичні показники (10,853 сесій / $3.06%), що є логічним для об'єднаного процесу.
-     - На кроці оплати (Payment ➡️ Action) втрачається ~28.8% користувачів (з 6,663 до 4,745). Це високий показник відмов для фінального кроку, який може вказувати на технічні помилки платіжного шлюзу, відсутність локальних методів оплати або непередбачені додаткові комісії на етапі розрахунку.  
+**1. Conversion Funnel Analysis (The main problem is the “Bounce” at the start)**  
+  
+* Huge churn at the first step (Visit ➡️ Engagement): The most critical point of user loss. 78.79% of visitors leave the site without any interaction (conversion to engagement is only 21.21%). This indicates low quality traffic, too slow loading pages or irrelevance of the landing page to user expectations.  
+* Add to cart stage (Engagement ➡️ Cart): Only 4.2% of initial users add the product to the cart. Of the engaged users, this is about 20% - a standard indicator for e-commerce, but the total volume suffers greatly due to the drop in the first step.  
+* Checkout and payment (Checkout ➡️ Payment ➡️ Action):  
+- The Shipping and Checkout stages have identical indicators (10,853 sessions / $3.06%), which is logical for a combined process.  
+- ~28.8% of users are lost at the Payment ➡️ Action (from 6,663 to 4,745). This is a high bounce rate for the final step, which may indicate technical errors in the payment gateway, lack of local payment methods, or unforeseen additional fees at the checkout stage.
    
-**2. Сезонність та динаміка (Trend Line):**
-
- * **Передноворічний пік:** Продажі плавно зростали протягом листопада та досягли свого піку на 50-му тижні (W50) — 760 замовлень. Це класичний ефект «Чорної п'ятниці» та закупівлі різдвяних подарунків.  
- * **Святковий спад:** На 52 та 53 тижнях (кінець грудня) спостерігається стрімке падіння замовлень (до 232 та 137 відповідно), що пов'язано з логістичними паузами у період свят. У січні спостерігається поступова стабілізація попиту.  
-
-**3. Географія та мобільність (Segments):**   
-
-* **Домінування США:** Сполучені Штати генерують найбільшу кількість трафіку (155.83K сесій), проте рівень конверсії там середній.
-* **Мобільний трафік** — недооцінений драйвер: Мобільні пристрої (mobile) приносять 141.08K сесій, але мають вищу конверсію (1.38%), ніж десктоп (205.90K сесій з конверсією близькою до середньої). Це вказує на якісну мобільну адаптацію сайту, проте десктоп все ще переважає за обсягом залучення.
+**2. Seasonality and dynamics (Trend Line):**  
   
-**4. Маркетингові канали (Source / Medium):**  
+* **New Year's peak:** Sales gradually increased throughout November and reached their peak in the 50th week (W50) - 760 orders. This is a classic effect of "Black Friday" and the purchase of Christmas gifts.  
+* **Holiday decline:** In weeks 52 and 53 (end of December) there is a sharp drop in orders (to 232 and 137, respectively), which is associated with logistical pauses during the holidays. In January, demand gradually stabilizes.
   
-* **Прямий та органічний трафік:** Google (organic) та Direct приносять найбільше сесій, але мають нижчу конверсію порівняно з реферальними джерелами (наприклад, shop.googlemerchandise...), де конверсія значно вища (найтемніші сегменти на графіку — до 3.2%).  
+**3. Geography and Mobility (Segments):**  
+  
+* **US dominance:** The United States generates the most traffic (155.83K sessions), but the conversion rate there is average.  
+* **Mobile traffic** is an underrated driver: Mobile devices bring 141.08K sessions, but have a higher conversion rate (1.38%) than desktop (205.90K sessions with a conversion rate close to average). This indicates a high-quality mobile adaptation of the site, but desktop still dominates in terms of engagement.
+  
+**4. Marketing Channels (Source / Medium):**  
+  
+* **Direct and Organic Traffic:** Google (organic) and Direct bring the most sessions, but have lower conversion compared to referral sources (e.g. shop.googlemerchandise...), where conversion is much higher (the darkest segments on the graph are up to 3.2%).  
   
 ---  
   
-##  Пропозиції та рекомендації (Recommendations)  
+## Suggestions and recommendations (Recommendations)  
   
-На підставі проведеного аналізу можна надати наступні рекомендаціі:  
-
-**1. Оптимізація першого контакту (Зниження Bounce Rate):**  
+Based on the analysis, the following recommendations can be made:  
   
- * **Провести UX/UI аудит головної сторінки:** З'ясувати, чому майже 80% користувачів не взаємодіють із сайтом. Перевірити швидкість завантаження сторінок (особливо на мобільних телефонах через Google PageSpeed Insights).
- * **Релевантність реклами:** Перевірити налаштування таргетингу в Google Ads (cpc). Трафік з CPC має низьку конверсію, що може вказувати на невідповідність обіцянок у креативах реальному контенту сайту.  
-
-**2. Покращення процесу оформлення та оплати (Checkout Optimization):**  
+**1. First Contact Optimization (Reducing Bounce Rate):**  
   
-* **Аналіз платіжного кроку:** Слід провести технічний аудит етапу оплати. Чому майже третина людей, що ввели дані доставки, не завершують покупку? Рекомендується впровадити автозаповнення полів, додати альтернативні швидкі методи оплати (Apple Pay, Google Pay, PayPal).  
-* **Прозорість цін:** Переконатися, що вартість доставки та податки показуються користувачеві до того, як він почне оформлення замовлення, а не безпосередньо на кроці оплати.
-
-**3. Mobile-First маркетинг**  
-
-Оскільки мобільний трафік конвертується краще (1.38% проти середнього 1.34%), варто змістити частину рекламного бюджету на мобільні кампанії у соціальних мережах (Instagram, TikTok, Facebook).  
-
-**4. Робота з реферальним трафіком**  
+* **Conduct a UX/UI audit of your homepage:** Find out why nearly 80% of users don’t engage with your site. Check page load speed (especially on mobile with Google PageSpeed ​​Insights).  
+* **Ad relevance:** Check your Google Ads targeting settings (cpc). CPC traffic has low conversions, which may indicate that the promises in your creatives don’t match the actual content of your site.  
   
-Оскільки реферальні джерела (referral) демонструють найвищу конверсію, необхідно масштабувати партнерські програми та посилювати присутність бренду на сайтах-партнерах  
+**2. Checkout Optimization:**  
+  
+* **Checkout Step Analysis:** A technical audit of the checkout step should be conducted. Why do almost a third of people who enter shipping information not complete the purchase? It is recommended to implement autofill fields, add alternative quick payment methods (Apple Pay, Google Pay, PayPal).  
+* **Price Transparency:** Make sure that shipping costs and taxes are shown to the user before he starts the order, and not directly at the checkout step.
+    
+**3. Mobile-First Marketing**  
+  
+Since mobile traffic converts better (1.38% vs. average 1.34%), it is worth shifting some of your advertising budget to mobile campaigns on social media (Instagram, TikTok, Facebook).  
+  
+**4. Working with referral traffic**  
+  
+Since referral sources demonstrate the highest conversion, it is necessary to scale affiliate programs and strengthen the brand presence on partner sites  
   
 ---  
   
@@ -150,3 +153,4 @@ The project was implemented in 4 consecutive stages: from analyzing the database
 **Project Status:** Completed.  
   
 **License:** MIT License.  
+  

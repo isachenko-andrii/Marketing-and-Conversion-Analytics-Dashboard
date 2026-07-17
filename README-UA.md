@@ -15,6 +15,7 @@
   
 **Marketing and Conversion Analytics Dashboard**/ — каталог проекту  
 ├── data/ — дані проєкту  
+├── sql/ — код запиту за BigQuery
 ├── doc/ — технічне завдання  
 ├── img/ — збережені графіки та дашборди  
 ├── twbx/ — файли проекту  

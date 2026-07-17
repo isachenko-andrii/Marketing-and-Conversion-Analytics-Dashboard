@@ -8,27 +8,27 @@
   
 </div>  
   
-## Опис проекту  
-    
-Цей проєкт присвячений аналізу поведінки користувачів інтернет-магазину на основі реальних (знеособлених) даних Google Analytics 4 (GA4).  
-**Мета проєкту** — дослідити шлях клієнта від першого візиту до здійснення покупки, візуалізувати воронку конверсії та визначити ключові фактори, які впливають на падіння конверсії на кожному з етапів.  
-
-## Джерело даних  
+## Project Description  
   
-Публічний датасет [bigquery-public-data.ga4_obfuscated_sample_ecommerce](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table) в Google BigQuery.
-
-## Використаний технологічний стек  
+This project is dedicated to analyzing the behavior of online store users based on real (depersonalized) Google Analytics 4 (GA4) data.  
+**Project Goal** — to study the customer journey from the first visit to the purchase, visualize the conversion funnel, and identify key factors that affect the drop in conversion at each stage.  
   
-*   **База даних & SQL**: Google BigQuery (робота з сирими даними bigquery-public-data.ga4_obfuscated_sample_ecommerce)  
-*   **BI-інструмент**: Tableau Public (побудова інтерактивного дашборду)  
-*   **Очищення та трансформація даних**: Створення плоских агрегованих таблиць на рівні сесій за допомогою складних CTE та віконних функцій SQL.  
+## Data source  
+  
+Public dataset [bigquery-public-data.ga4_obfuscated_sample_ecommerce](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=ga4_obfuscated_sample_ecommerce&t=events_20210131&page=table) in Google BigQuery.  
+  
+## Technology stack used  
+  
+* **Database & SQL**: Google BigQuery (working with raw data bigquery-public-data.ga4_obfuscated_sample_ecommerce)  
+* **BI tool**: Tableau Public (building an interactive dashboard)  
+* **Data cleansing and transformation**: Creating flat aggregated tables at the session level using complex CTEs and SQL window functions.  
   
 ---  
   
-## Кроки виконання проєкту (Step-by-Step Workflow)
-
-Проєкт був реалізований у 4 послідовні етапи: від аналізу структури бази даних до побудови та оформлення фінального дашборду.
-
+## Project Implementation Steps (Step-by-Step Workflow)  
+ 
+The project was implemented in 4 consecutive stages: from analyzing the database structure to building and designing the final dashboard.  
+  
 ### Крок 1. Дослідження структури даних у BigQuery
 На першому етапі було проаналізовано схему таблиць публічного набору даних `ga4_obfuscated_sample_ecommerce`. Оскільки дані GA4 зберігаються у денормалізованому вигляді зі вкладеними полями (RECORD/STRUCT), було розроблено стратегію розгортання параметрів за допомогою оператора `UNNEST`.
 
@@ -109,45 +109,44 @@
 
 Оскільки мобільний трафік конвертується краще (1.38% проти середнього 1.34%), варто змістити частину рекламного бюджету на мобільні кампанії у соціальних мережах (Instagram, TikTok, Facebook).  
 
-**4. 4. Робота з реферальним трафіком**  
+**4. Робота з реферальним трафіком**  
   
 Оскільки реферальні джерела (referral) демонструють найвищу конверсію, необхідно масштабувати партнерські програми та посилювати присутність бренду на сайтах-партнерах  
   
 ---  
   
-## Структура проекту  
+## Project structure  
   
-**Marketing and Conversion Analytics Dashboard**/ — каталог проекту  
-├── data/ — дані проєкту  
-├── doc/ — технічне завдання  
-├── sql/ — код запиту за BigQuery  
-├── twbx/ — файли проекту  
-├── img/ — збережені графіки та дашборди  
-├── LICENSE — MIT Ліцензія  
-├── project-logo.png — обкладинка проекту  
-├── README-UA.md — опис проекту українською мовою   
-└── README.md — опис проекту англійською мовою  
+**Marketing and Conversion Analytics Dashboard**/ — project directory  
+├── data/ — project data  
+├── doc/ — technical specifications  
+├── sql/ — BigQuery query code  
+├── twbx/ — project files  
+├── img/ — saved graphs and dashboards  
+├── LICENSE — MIT License  
+├── project-logo.png — project cover  
+├── README-UA.md — project description in Ukrainian  
+└── README.md — project description in English  
   
-## Як переглянути проєкт  
+## How to view the project  
   
-1. Завантажте файл проєкту `Marketing and Conversion Analytics Dashboard.twbx` з цього репозиторію.  
-2. Відкрийте його за допомогою безкоштовного [Tableau Reader](https://www.tableau.com/products/reader) або Tableau Desktop.  
-3. Переглянути та протестувати повністю інтерактивний дашборд можна за посиланням: [Marketing and Conversion Analytics Dashboard](https://lnk.ua/SEwCSEvTA)  
+1. Download the project file `Marketing and Conversion Analytics Dashboard.twbx` from this repository.  
+2. Open it with the free [Tableau Reader](https://www.tableau.com/products/reader) or Tableau Desktop.  
+3. You can view and test the fully interactive dashboard at: [Marketing and Conversion Analytics Dashboard](https://lnk.ua/SEwCSEvTA)
+   
+## Contacts  
   
-## Контакти  
-    
-**Автор:** [Andrii Isachenko](https://isachenko-andrii.github.io)   
-**Посада:** Junior Data Analyst  
+**Author:** [Andrii Isachenko](https://isachenko-andrii.github.io)  
+**Position:** Junior Data Analyst  
 **LinkedIn:** [Andrii Isachenko](https://www.linkedin.com/in/isachenko-andrii/)  
-**E-mail:** andrii.isachenko@gmail.com   
+**E-mail:** andrii.isachenko@gmail.com  
   
-## Подяки    
+## Acknowledgements  
   
-- Дякую курсу [Аналітик даних/GoIT](https://goit.global/ua/courses/data-analytics/), частиною якого була робота над цим проектом.  
+- Thanks to the course [Data Analyst/GoIT](https://goit.global/ua/courses/data-analytics/), which was part of the work on this project.  
   
 ---  
   
-**Статус проекту:** Завершено.  
-    
-**Ліцензія:** MIT Ліцензія.  
+**Project Status:** Completed.  
   
+**License:** MIT License.  

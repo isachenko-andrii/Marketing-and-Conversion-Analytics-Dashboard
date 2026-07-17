@@ -93,7 +93,7 @@
   
 1. Завантажте файл проєкту `Marketing and Conversion Analytics Dashboard.twbx` з цього репозиторію.  
 2. Відкрийте його за допомогою безкоштовного [Tableau Reader](https://www.tableau.com/products/reader) або Tableau Desktop.  
-3. Проєкт також опубліковано на Tableau Public: [Marketing and Conversion Analytics Dashboard](https://lnk.ua/SEwCSEvTA)  
+3. Переглянути та протестувати повністю інтерактивний дашборд можна за посиланням: [Marketing and Conversion Analytics Dashboard](https://lnk.ua/SEwCSEvTA)  
   
 ## Контакти  
     

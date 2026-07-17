@@ -1,4 +1,14 @@
-
+![Project-logo](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/Project-logo.png)
+#### [EN](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/README.md) | [UA](https://github.com/isachenko-andrii/Marketing-and-Conversion-Analytics-Dashboard/blob/main/README-UA.md) Цей матеріал також доступний англійською мовою.
+---  
+<div align="center">  
+    
+## Панель керування маркетинговою та конверсійною аналітикою <br>(Tableau Public)   
+  
+</div>  
+  
+## Опис проекту  
+    
 
   
 ## Структура проекту  
